@@ -1,1 +1,1 @@
-# apkRepository
+# cordova-plugin-camera
