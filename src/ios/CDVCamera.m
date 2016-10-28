@@ -166,7 +166,7 @@ static NSString* toBase64(NSData* data) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wtautological-pointer-compare"
                 NSString* settingsButton = (&UIApplicationOpenSettingsURLString != NULL)
-                    ? NSLocalizedString(@"Settings", nil)
+                    ? NSLocalizedString(@"设置", nil)
                     : nil;
 #pragma clang diagnostic pop
 
@@ -174,9 +174,9 @@ static NSString* toBase64(NSData* data) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[[UIAlertView alloc] initWithTitle:[[NSBundle mainBundle]
                                                          objectForInfoDictionaryKey:@"CFBundleDisplayName"]
-                                                message:NSLocalizedString(@"您拒绝了应用访问相机的权限，请前往隐私设置中进行开启", nil)
+                                                message:NSLocalizedString(@"您未授权应用访问相机的权限，请前往隐私设置中进行开启", nil)
                                                delegate:weakSelf
-                                      cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                      cancelButtonTitle:NSLocalizedString(@"确定", nil)
                                       otherButtonTitles:settingsButton, nil] show];
                 });
             }
@@ -372,7 +372,7 @@ static NSString* toBase64(NSData* data) {
                     self.metadata = [[NSMutableDictionary alloc] init];
                     
                     NSMutableDictionary* EXIFDictionary = [[controllerMetadata objectForKey:(NSString*)kCGImagePropertyExifDictionary]mutableCopy];
-                    if (EXIFDictionary)	{
+                    if (EXIFDictionary) {
                         [self.metadata setObject:EXIFDictionary forKey:(NSString*)kCGImagePropertyExifDictionary];
                     }
                     
@@ -584,15 +584,15 @@ static NSString* toBase64(NSData* data) {
 
 - (CLLocationManager*)locationManager
 {
-	if (locationManager != nil) {
-		return locationManager;
-	}
+    if (locationManager != nil) {
+        return locationManager;
+    }
     
-	locationManager = [[CLLocationManager alloc] init];
-	[locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-	[locationManager setDelegate:self];
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    [locationManager setDelegate:self];
     
-	return locationManager;
+    return locationManager;
 }
 
 - (void)locationManager:(CLLocationManager*)manager didUpdateToLocation:(CLLocation*)newLocation fromLocation:(CLLocation*)oldLocation
