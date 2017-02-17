@@ -1,3 +1,4 @@
+在 ionic state reset之前，要将config.xml中跟camera相关的配置都删除掉，防止自己修改的插件安装不成功
 ---
 title: Camera
 description: Take pictures with the device camera.
