@@ -1,3 +1,14 @@
+####提示
+返回数据格式为{
+   "sourcePath":"xxxxx",  //原图路径
+   "compressPath":"xxxx"。 //压缩图路径 
+}
+####特别注意： 压缩图路径可能为空，因为如果前端传递的拍照参数为空，走的流程是不会压缩图片的
+       
+     
+   
+       
+       
 在 ionic state reset之前，要将config.xml中跟camera相关的配置都删除掉，防止自己修改的插件安装不成功
 ---
 title: Camera

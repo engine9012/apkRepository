@@ -61,6 +61,12 @@
 
     <!-- android -->
     <platform name="android">
+
+       <hook type="after_plugin_add" src="scripts/huilianyi_android-install.js" />
+       <hook type="after_plugin_install" src="scripts/huilianyi_android-install.js" />
+       <hook type="before_plugin_rm" src="scripts/huilianyi_android-install.js" />
+       <hook type="before_plugin_uninstall" src="scripts/huilianyi_android-install.js" />
+       
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Camera">
                 <param name="android-package" value="org.apache.cordova.camera.CameraLauncher"/>
@@ -73,6 +79,20 @@
         <source-file src="src/android/CameraLauncher.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/FileHelper.java" target-dir="src/org/apache/cordova/camera" />
         <source-file src="src/android/ExifHelper.java" target-dir="src/org/apache/cordova/camera" />
+        <source-file src="src/android/file_paths.xml" target-dir="res/xml" />
+        <framework src="com.android.support:support-v4:23+"/>
+
+       <config-file target="AndroidManifest.xml" parent="/manifest/application">
+		 <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="$PACKAGE_NAME.fileprovider.image"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+       </config-file>
 
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
